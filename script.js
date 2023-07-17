@@ -107,6 +107,7 @@ const contagemRegressiva = () => {
 
 function iniciarOuPausar() {
     if (intervaloId) {
+        audioPause.play();
         zerar()
         return // early return -- circuit breaker
     }
@@ -117,7 +118,6 @@ function iniciarOuPausar() {
 }
 
 function zerar() {
-    audioPause.play();
     clearInterval(intervaloId)
     startPauseBtnIcon.setAttribute('src', `/imagens/play_arrow.png`)
     startPauseBtnText.textContent = "Começar"
