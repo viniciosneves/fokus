@@ -33,6 +33,8 @@ const html = document.querySelector("html")
 
 const banner = document.querySelector(".app__section-banner-container .app__image")
 
+const titulo = document.querySelector(".app__title")
+
 const timer = document.querySelector("#timer")
 const startPauseBtn = document.querySelector("#start-pause")
 const startPauseBtnText = document.querySelector("#start-pause span")
@@ -53,12 +55,40 @@ let tempoDecorridoEmSegundos = 25; // trabalhar em segundos pra ver tudo acontec
 //let tempoDecorridoEmSegundos = 25 * 60; -> quando finalizar, fala pro aluno lembrar de multiplicar por 60 pra ter a quantidade de minutos em segundos
 mostrarTempo()
 
+function alterarBanner(contexto) {
+    banner.setAttribute('src', `/imagens/${contexto}.png`)
+
+    switch (contexto) {
+        case "foco":
+            titulo.innerHTML = `
+                Otimize sua produtividade,<br>
+                <strong class="app__title-strong">mergulhe no que importa.</strong>
+            `
+            break;
+        case "short-break":
+            titulo.innerHTML = `
+                Que tal dar uma respirada? <br>
+                <strong class="app__title-strong">Faça uma pausa curta!.</strong>
+            `
+            break;
+        case "long-break":
+            titulo.innerHTML = `
+                Hora de voltar à superfície. <br>
+                <strong class="app__title-strong">Pare para uma pausa longa.</strong>
+            `
+            break;
+
+        default:
+            break;
+    }
+}
+
 function alterarContexto(contexto) {
     html.setAttribute('data-contexto', contexto)
     // quando trocamos, zeramos nosso timer e atualizamos o mostrador
     zerar()
     mostrarTempo()
-    banner.setAttribute('src', `/imagens/${contexto}.png`)
+    alterarBanner(contexto)
     buttons.forEach(function (button) {
         button.classList.remove('active');
     });
@@ -88,7 +118,7 @@ longBtn.addEventListener("click", () => { // desafio?
 startPauseBtn.addEventListener("click", iniciarOuPausar)
 
 musicaFocoInput.addEventListener('change', () => {
-    if(musica.paused) {
+    if (musica.paused) {
         musica.play();
     } else {
         musica.pause();
