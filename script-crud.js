@@ -66,6 +66,7 @@ const selecionaTarefa = (tarefa, elemento) => {
     if (tarefaSelecionada == tarefa) {
         taskAtiveDescription.textContent = null
         itemTarefaSelecionada = null
+        tarefaSelecionada = null
         return
     }
 
