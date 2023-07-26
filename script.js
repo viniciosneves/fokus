@@ -1,31 +1,3 @@
-/**
- * Rascunho da ementa
- * document
- * querySelector
- * querySelectorAll
- * tipos de seletores (tag, classe e id)
- * data-* attributes
- * setAttribute
- * innerHTML
- * textContent
- * toLocaleTimeString
- * 
- * atenção ao falar de JS, usar "relembrar"
- * 
- * let, var e const
- * interpolação de string com `${}`
- * setInterval   (Event Loop) - para saber mais
- * clearInterval (Event Loop) - para saber mais
- * arrow function / function normal
- * addEventListener
- * 
- * performance | boas práticas nos seletores *** para saber mais
- * 
- * ATENÇÃO: use nomes de variáveis e funções que você costuma usar nos seus cursos
- * 
- */
-
-
 const focoBtn = document.querySelector('.app__card-button--foco')
 const shortBtn = document.querySelector('.app__card-button--short')
 const longBtn = document.querySelector('.app__card-button--long')
@@ -42,7 +14,6 @@ const startPauseBtnIcon = document.querySelector(".app__card-primary-butto-icon"
 
 const buttons = document.querySelectorAll('.app__card-button');
 const musicaFocoInput = document.querySelector('#alternar-musica');
-
 
 const audioPlay = new Audio('/sons/play.wav');
 const audioPause = new Audio('/sons/pause.mp3');
@@ -128,7 +99,21 @@ musicaFocoInput.addEventListener('change', () => {
 const contagemRegressiva = () => {
     if (tempoDecorridoEmSegundos <= 0) {
         zerar()
-        alert('acabou')
+        const focoAtivo = html.getAttribute('data-contexto') === 'foco'
+        if (focoAtivo) {            
+            var event = new CustomEvent("TarefaFinalizada", {
+                detail: {
+                    message: "A tarefa foi concluída com sucesso!",
+                    time: new Date(),
+                },
+                bubbles: true,
+                cancelable: true
+            });
+            document.dispatchEvent(event);
+            tempoDecorridoEmSegundos = 25
+            mostrarTempo()
+        }
+
         return
     }
     tempoDecorridoEmSegundos -= 1
