@@ -10,6 +10,8 @@ const btnDeletar = document.querySelector('.app__form-footer__button--delete')
 const btnDeletarConcluidas = document.querySelector('#btn-remover-concluidas')
 const btnDeletarTodas = document.querySelector('#btn-remover-todas')
 
+const formLabel = document.querySelector('.app__form-label')
+
 
 let tarefas = [
     {
@@ -89,7 +91,7 @@ const selecionaTarefaParaEditar = (tarefa, elemento) => {
         limparForm()
         return
     }
-
+    formLabel.textContent = 'Editando tarefa'
     tarefaEmEdicao = tarefa
     paragraphEmEdicao = elemento
     textarea.value = tarefa.descricao
@@ -120,6 +122,12 @@ function createTask(tarefa) {
         selecionaTarefaParaEditar(tarefa, paragraph)
     })
 
+    svgIcon.addEventListener('click', (event) => {
+        event.stopPropagation()
+        li.classList.add('app__section-task-list-item-complete')
+        button.setAttribute('disabled', true)
+    })
+
     li.onclick = () => {
         selecionaTarefa(tarefa, li)
     }
@@ -147,6 +155,7 @@ cancelFormTaskBtn.addEventListener('click', () => {
 })
 
 toggleFormTaskBtn.addEventListener('click', () => {
+    formLabel.textContent = 'Adicionando tarefa'
     formTask.classList.toggle('hidden')
 })
 
