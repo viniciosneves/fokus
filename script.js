@@ -39,13 +39,13 @@ function alterarBanner(contexto) {
         case "short-break":
             titulo.innerHTML = `
                 Que tal dar uma respirada? <br>
-                <strong class="app__title-strong">Faça uma pausa curta!.</strong>
+                <strong class="app__title-strong">Faça uma pausa curta.</strong>
             `
             break;
         case "long-break":
             titulo.innerHTML = `
                 Hora de voltar à superfície. <br>
-                <strong class="app__title-strong">Pare para uma pausa longa.</strong>
+                <strong class="app__title-strong">Faça uma pausa longa.</strong>
             `
             break;
 

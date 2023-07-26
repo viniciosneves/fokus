@@ -145,8 +145,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app__card-primary-button {
-    padding: 0.8rem;
-    width: 12rem;
+    padding: 0.8rem 2.4rem;
+    box-sizing: border-box;
     color: var(--color-secondary);
     border: none;
     cursor: pointer;
@@ -155,10 +155,14 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--linear-botes);
     margin-top: 3.2rem;
     font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; 
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    font-family: Montserrat;
 }
 
 .app__footer {
@@ -168,6 +172,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     background: #010B15;
+    margin-top: 8rem;
 }
 
 .app__footer-text {
@@ -209,6 +214,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     line-height: 150%;
     white-space: nowrap;
+    font-family: Montserrat;
 }
 
 .app__section-active-task-description {
@@ -287,6 +293,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1.6rem;
     border-radius: 0.8rem;
     background: var(--fundo-card);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; 
+    font-family: Montserrat;
 }
 
 .app__form-label {
